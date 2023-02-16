@@ -18,8 +18,14 @@ function selectPeriod (period: Period) {
 }
 
 const posts = computed<TimelinePost[]>(() => {
-        return [today, thisWeek, thisMonth]
-                .map(post => {  
+        return postsStore.ids
+                .map(id => {  
+                    const post = postsStore.all.get(id)
+
+                    if (!post) {
+                        throw Error(`Post with id of ${id} was expected but not found.`)
+                    }
+
                     return {
                         ...post,
                         created: DateTime.fromISO(post.created)
