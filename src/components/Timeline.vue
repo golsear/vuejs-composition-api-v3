@@ -39,8 +39,6 @@ const posts = computed<TimelinePost[]>(() => {
     })
 </script>
 <template>
-    {{ postsStore.foo }}
-    <button @click="postsStore.updateFoo('bar')">Update</button>
     <nav class="is-primary panel">
         <span class="panel-tabs">
             <a v-for="period of periods"
