@@ -1,29 +1,17 @@
-import { reactive, readonly } from "vue"
+import { defineStore } from "pinia"
 
 interface PostState {
     foo: string
 }
 
-export class PostsStore {
-    #state: PostState
+export const usePosts = defineStore("posts", {
+    state: (): PostState => ({
+        foo: 'foo'
+    }),
 
-    constructor () {
-        this.#state = reactive<PostState>({
-            foo: 'foo'
-        }) 
+    actions: {
+        updateFoo (foo: string) {
+            this.foo = foo
+        }
     }
-
-    getState () {
-        return readonly(this.#state)
-    }
-
-    updateFoo (foo: string) {
-        this.#state.foo = foo
-    }
-}
-
-const store = new PostsStore()
-
-export function usePosts () {
-    return store
-}
+})
