@@ -5,7 +5,7 @@ import { periods } from "../constans"
 
 const postsStore = usePosts()
 
-postsStore.fetchPosts()
+await postsStore.fetchPosts()
 </script>
 <template>
     <nav class="is-primary panel">
