@@ -4,6 +4,8 @@ import TimelineItem from "./TimelineItem.vue"
 import { periods } from "../constans"
 
 const postsStore = usePosts()
+
+postsStore.fetchPosts()
 </script>
 <template>
     <nav class="is-primary panel">
