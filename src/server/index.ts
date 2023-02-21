@@ -10,11 +10,13 @@ app.use(bodyParser.json())
 const allPosts = [today, thisWeek, thisMonth]
 
 app.get("/posts", (req, res) => {
-    res.json([today, thisWeek, thisMonth])
+    res.json(allPosts)
 })
 
 app.post<{}, {}, Post>("/posts", (req, res) => {
-    res.json()
+    const post = { ...req.body, id: (Math.random() * 100000).toFixed() }
+    allPosts.push(post)
+    res.json(post)  
 })
 
 app.listen(8000, () => {
