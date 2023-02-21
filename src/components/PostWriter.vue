@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { TimelinePost } from '../posts'
 
 const props = defineProps<{
@@ -7,6 +7,12 @@ const props = defineProps<{
 }>()
 
 const title = ref(props.post.title)
+const contentEditable = ref<HTMLDivElement>()
+
+onMounted(() => {
+    console.log('Mounted')
+    console.log(contentEditable.value?.innerText)
+})
 </script>
 
 <template>
@@ -16,6 +22,9 @@ const title = ref(props.post.title)
                 <div class="label">Post title</div>
                 <input type="text" class="input" v-model="title">
                 {{ title }}
+            </div>
+            <div contenteditable ref="contentEditable">
+                This is the post.
             </div>
         </div>
     </div>
