@@ -4,7 +4,7 @@ import { NewUser } from "../users"
 export const useUsers = defineStore("users", {
     actions: {
         async createUser (newUser: NewUser) {
-            const body = JSON.stringify({ newUser })
+            const body = JSON.stringify(newUser)
             return await window.fetch("http://localhost:8000/users", {
                 method: "POST",
                 headers: {
