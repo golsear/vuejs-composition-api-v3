@@ -1,4 +1,4 @@
-interface Status {
+export interface Status {
     valid: boolean
     message?: string
 }
@@ -7,7 +7,7 @@ type Rule = (value: string) => Status
 
 export function length ({ min, max }: { min: number, max: number }) {
     return function (value: string): Status {
-        const result = Boolean(value.length > min && value.length < max)
+        const result = Boolean(value.length >= min && value.length <= max)
 
         return {
             valid: result,
@@ -16,7 +16,7 @@ export function length ({ min, max }: { min: number, max: number }) {
     }
 }
 
-export function required (value: string): Status {
+export const required: Rule = (value: string): Status => {
     const result = Boolean(value)
 
     return {
