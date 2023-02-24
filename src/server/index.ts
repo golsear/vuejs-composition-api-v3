@@ -24,6 +24,7 @@ app.post<{}, {}, Post>("/posts", (req, res) => {
 app.post<{}, {}, NewUser>("/users", (req, res) => {
     const user: User = { ...req.body, id: (Math.random() * 100000).toFixed() }
     allUsers.push(user)
+    // JavaScript Object Destructuring, Spread Syntax, and the Rest Parameter
     const { password, ...rest } = user
     res.json(rest)  
 })
