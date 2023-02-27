@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, watch, watchEffect } from 'vue'
-import { TimelinePost } from '../posts'
+import { Post, TimelinePost } from '../posts'
 import { useRouter } from 'vue-router'
 import { marked } from 'marked'
 import highlightjs from 'highlight.js'
@@ -20,7 +20,7 @@ function parseHtml (markdown: string) {
 }
 
 const props = defineProps<{
-    post: TimelinePost
+    post: TimelinePost | Post
 }>()
 
 const title = ref(props.post.title)
