@@ -6,6 +6,7 @@ import { marked } from 'marked'
 import highlightjs from 'highlight.js'
 import debounce from 'lodash/debounce'
 import { usePosts } from '../stores/posts'
+import { useUsers } from '../stores/users'
 
 function parseHtml (markdown: string) {
     marked.parse(markdown, {
@@ -29,6 +30,7 @@ const html = ref('')
 const contentEditable = ref<HTMLDivElement>()
 const posts = usePosts()
 const router = useRouter()
+const userStore = useUsers()
 
 /* watchEffect(() => {
     marked.parse(content.value, (err, parseResult) => {
@@ -58,9 +60,15 @@ function handleInput () {
 }
 
 async function handleClick () {
-    const newPost: TimelinePost = {
+    if (!userStore.currentUserId) {
+        throw Error('User was not found')
+    }
+
+    const newPost: Post = {
         ...props.post,
+        created: typeof props.post.created === 'string' ? props.post.created : props.post.created.toISO(),
         title: title.value,
+        authorId: userStore.currentUserId,
         markdown: content.value,
         html: html.value
     }
