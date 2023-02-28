@@ -37,7 +37,6 @@ const canEdit = computed(() => {
                 :to="`/posts/${post.id}/edit`" 
                 class="is-link button is-rounded">Edit Post</RouterLink>
             <h1>{{ post.title }}</h1>
-            <div>{{ post.authorId }} : {{ usersStore.currentUserId }}</div>
             <div v-html="post.html" />
         </div>
         <div class="column"></div>

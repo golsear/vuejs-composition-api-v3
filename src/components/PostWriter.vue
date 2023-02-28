@@ -24,12 +24,14 @@ const props = defineProps<{
     post: TimelinePost | Post
 }>()
 
+const emit = defineEmits<{
+    (event: "submit", post: Post): void 
+}>()
+
 const title = ref(props.post.title)
 const content = ref(props.post.markdown)
 const html = ref('')
 const contentEditable = ref<HTMLDivElement>()
-const posts = usePosts()
-const router = useRouter()
 const userStore = useUsers()
 
 /* watchEffect(() => {
@@ -73,8 +75,7 @@ async function handleClick () {
         html: html.value
     }
 
-    await posts.createPost(newPost)
-    router.push('/')
+    emit('submit', newPost)
 }
 </script>
 

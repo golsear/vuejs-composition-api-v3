@@ -52,6 +52,17 @@ export const usePosts = defineStore("posts", {
                 },
                 body
             })
+        },
+
+        async updatePost (post: Post) {
+            const body = JSON.stringify(post)
+            return await window.fetch("/api/posts", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body
+            })
         }
     },
 
