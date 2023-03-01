@@ -12,8 +12,6 @@ const modalStyle = computed(() => {
     display: modal.show.value ? 'block' : 'none'
   }
 })
-
-userStore.authenticate()
 </script>
 
 <template>
