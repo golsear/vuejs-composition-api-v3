@@ -35,7 +35,7 @@ describe('Navbar', () => {
         })
 
         expect(wrapper.find('#sign-up').exists()).toBe(true)
-        expect(wrapper.find('[data-testid=sign-in]').exists()).toBe(true)
+        expect(wrapper.find('[data-testid="sign-in"]').exists()).toBe(true)
     })
 
     it("renders new post and logout when authenticated", async () => {
@@ -54,11 +54,10 @@ describe('Navbar', () => {
         await wrapper.find('#logout').trigger('click')
 
         expect(wrapper.find('#sign-up').exists()).toBe(true)
-        expect(wrapper.find('[data-testid=sign-in]').exists()).toBe(true)
+        expect(wrapper.find('[data-testid="sign-in"]').exists()).toBe(true)
 
-        await wrapper.find('[data-testid=sign-in]').trigger('click')
+        await wrapper.find('[data-testid="sign-in"]').trigger('click')
 
         expect(document.body.querySelector('#signin-form')).toBeTruthy()
-        console.log(document.body.outerHTML)
     })
 })  

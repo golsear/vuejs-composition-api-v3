@@ -21,7 +21,7 @@ export const required: Rule = (value: string): Status => {
 
     return {
         valid: result,
-        message: result ? undefined : 'This fields is required' 
+        message: result ? undefined : 'This field is required' 
     }
 }
 
