@@ -14,5 +14,5 @@ async function handleSignup (newUser: NewUser) {
 </script>
 
 <template>
-    <UserForm @submit="handleSignup" />
+    <UserForm id="signup-form" @submit="handleSignup" />
 </template>
