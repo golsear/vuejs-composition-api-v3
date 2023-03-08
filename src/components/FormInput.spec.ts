@@ -1,5 +1,4 @@
 import { mount } from '@vue/test-utils'
-import { wrap } from 'lodash'
 import { describe, it, expect } from 'vitest'
 import { computed, defineComponent, ref } from 'vue'
 import FormInput from './FormInput.vue'
