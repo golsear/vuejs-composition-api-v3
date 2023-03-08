@@ -19,7 +19,7 @@ async function logout() {
         <div class="navbar-end">
             <div v-if="userStore.currentUserId" class="buttons">
                 <RouterLink to="/posts/new" class="button">New Post</RouterLink>
-                <button class="button" @click="logout()">Log Out</button>
+                <button id="logout" class="button" @click="logout()">Log Out</button>
             </div>
             
             <div v-else class="buttons">
