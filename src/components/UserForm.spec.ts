@@ -40,7 +40,6 @@ describe('UserForm', () => {
         await wrapper.find('#Username').setValue('username')
         await wrapper.find('#Password').setValue('password123')
 
-        console.log(wrapper.html())
         expect(wrapper.find('[data-testid="username"]').find('.is-danger').exists()).toBe(false)
         expect(wrapper.find('[data-testid="password"]').find('.is-danger').exists()).toBe(false)
 

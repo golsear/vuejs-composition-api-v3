@@ -58,6 +58,7 @@ function handleInput () {
     if (!contentEditable.value) {
         throw Error('ContentEditable DOM node was not found')
     }
+    console.log(contentEditable.value.innerText)
     content.value = contentEditable.value?.innerText
 }
 
@@ -90,7 +91,7 @@ async function handleClick () {
     </div>
     <div class="columns">
         <div class="column">
-            <div contenteditable ref="contentEditable" @input="handleInput" />
+            <div id="contenteditable" contenteditable ref="contentEditable" @input="handleInput" />
         </div>
         <div class="column">
             <div v-html="html" />
@@ -98,7 +99,7 @@ async function handleClick () {
     </div>
     <div class="columns">
         <div class="column">
-            <button class="button is-primary is-pulled-right" @click="handleClick">
+            <button id="submit" class="button is-primary is-pulled-right" @click="handleClick">
                 Save Post
             </button>
         </div>
